@@ -1,0 +1,41 @@
+name: 每日新聞 AI 機器人與自動備份
+
+on:
+  schedule:
+    # 這是 UTC 時間。台北時間 02:00 AM = UTC 18:00 (前一天的晚上)
+    - cron: '0 18 * * *'
+  workflow_dispatch: # 允許在 GitHub 網頁上手動點擊 "Run workflow" 觸發測試
+
+jobs:
+  bot-and-backup:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 允許 Action 將備份的報告寫回您的 GitHub Repo
+
+    steps:
+      - name: 📥 取得最新程式碼
+        uses: actions/checkout@v4
+
+      - name: 🐍 設定 Python 環境
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: 📦 安裝依賴套件
+        run: pip install -r requirements.txt
+
+      - name: 🚀 執行 AI 新聞分析機器人
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          LINE_CHANNEL_ACCESS_TOKEN: ${{ secrets.LINE_CHANNEL_ACCESS_TOKEN }}
+          LINE_USER_ID: ${{ secrets.LINE_USER_ID }}
+        run: python main.py
+
+      - name: 💾 自動將新產生的報告備份 (Commit & Push) 回 GitHub
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "📝 自動備份：每日新聞報告"
+          file_pattern: "reports/*.md"
