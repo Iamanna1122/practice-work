@@ -40,7 +40,7 @@ def send_line_message(message):
         "Authorization": f"Bearer {channel_access_token}"
     }
     payload = {
-        "to": user_id,
+        "to": user_id, # 這個 to 欄位可以填入個人的 U開頭 ID，或者是群組的 C開頭 ID
         "messages": [
             {
                 "type": "text",

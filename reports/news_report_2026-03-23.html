@@ -1,68 +1,15 @@
-import os
-import sys
-from dotenv import load_dotenv
 
-# 載入我們的自訂模組
-from search_module import get_latest_news
-from llm_module import analyze_news
-from notify_module import push_notification
-
-def main():
-    print("==========================================")
-    print("🚀 啟動程式：每日新聞情緒分析與推播機器人")
-    print("==========================================")
-    
-    # 載入環境變數 (如果存在 .env 檔案)
-    if os.path.exists(".env"):
-        load_dotenv()
-    else:
-        print("💡 提示：找不到 .env 檔案，將直接使用環境變數。")
-    
-    # =========== 步驟 1: 利用搜尋引擎蒐集資訊 ===========
-    # 您可以自行修改此字串來隨時變更追蹤的主題
-    keyword = "美股 OR 台股 OR 國際財經"
-    news_data = get_latest_news(query=keyword, max_results=6)
-    
-    if not news_data:
-        print("❌ 找不到新聞，程式提前結束。")
-        sys.exit()
-        
-    # =========== 步驟 2: 呼叫 Gemini 進行報告生成 ===========
-    report_text = analyze_news(news_data, keyword)
-    
-    print("\n------------------------------")
-    print("📝 最終生成的 AI 簡報如下：")
-    print("------------------------------")
-    print(report_text)
-    print("------------------------------\n")
-    
-    # =========== 步驟 3: 產生 HTML 報表與專屬網址 ===========
-    import datetime
-    import markdown
-    
-    # 改為直接儲存在根目錄，避免手動上傳時放錯資料夾導致 404
-    today_str = datetime.datetime.now().strftime("%Y-%m-%d")
-    md_file_path = f"news_report_{today_str}.md"
-    html_file_path = f"news_report_{today_str}.html"
-    
-    # 儲存 Markdown 原檔
-    with open(md_file_path, "w", encoding="utf-8") as f:
-        f.write(report_text)
-        
-    # 將 Markdown 轉換為精美的 HTML 網頁
-    html_body = markdown.markdown(report_text, extensions=['extra', 'nl2br'])
-    html_template = f"""
     <!DOCTYPE html>
     <html lang="zh-TW">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>AI 財經晨報 - {today_str}</title>
+        <title>AI 財經晨報 - 2026-03-23</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
         <style>
-            :root {{
+            :root {
                 --primary: #2563eb;
                 --primary-dark: #1d4ed8;
                 --accent: #f59e0b;
@@ -71,9 +18,9 @@ def main():
                 --text-main: #1e293b;
                 --text-muted: #64748b;
                 --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-            }}
-            * {{ box-sizing: border-box; }}
-            body {{ 
+            }
+            * { box-sizing: border-box; }
+            body { 
                 font-family: 'Inter', 'Noto Sans TC', sans-serif; 
                 line-height: 1.7; 
                 background: var(--bg-gradient); 
@@ -81,8 +28,8 @@ def main():
                 margin: 0;
                 padding: 40px 20px;
                 min-height: 100vh;
-            }}
-            .container {{ 
+            }
+            .container { 
                 max-width: 800px; 
                 margin: 0 auto; 
                 background: var(--card-bg); 
@@ -91,14 +38,14 @@ def main():
                 box-shadow: var(--shadow);
                 backdrop-filter: blur(10px);
                 border: 1px solid rgba(255,255,255,0.5);
-            }}
-            .header {{
+            }
+            .header {
                 text-align: center;
                 margin-bottom: 40px;
                 border-bottom: 2px solid #f1f5f9;
                 padding-bottom: 30px;
-            }}
-            .badge {{
+            }
+            .badge {
                 display: inline-block;
                 padding: 4px 12px;
                 background: #dbeafe;
@@ -107,65 +54,94 @@ def main():
                 font-size: 0.85rem;
                 font-weight: 600;
                 margin-bottom: 12px;
-            }}
-            h1 {{ 
+            }
+            h1 { 
                 font-size: 2.5rem; 
                 margin: 0; 
                 color: var(--primary-dark); 
                 letter-spacing: -0.025em;
-            }}
-            h2 {{ 
+            }
+            h2 { 
                 font-size: 1.5rem; 
                 color: var(--primary); 
                 margin-top: 40px; 
                 display: flex;
                 align-items: center;
                 gap: 10px;
-            }}
-            h2::before {{
+            }
+            h2::before {
                 content: '';
                 width: 4px;
                 height: 24px;
                 background: var(--accent);
                 border-radius: 4px;
-            }}
-            p {{ margin-bottom: 20px; }}
-            a {{ 
+            }
+            p { margin-bottom: 20px; }
+            a { 
                 color: var(--primary); 
                 text-decoration: none; 
                 font-weight: 600;
                 transition: all 0.2s;
                 border-bottom: 2px solid transparent;
-            }}
-            a:hover {{ 
+            }
+            a:hover { 
                 color: var(--primary-dark);
                 border-bottom-color: var(--primary-dark);
-            }}
-            ul {{ padding-left: 0; list-style: none; }}
-            li {{ 
+            }
+            ul { padding-left: 0; list-style: none; }
+            li { 
                 margin-bottom: 16px; 
                 padding: 15px;
                 background: #f8fafc;
                 border-radius: 12px;
                 border: 1px solid #e2e8f0;
-            }}
-            .footer {{
+            }
+            .footer {
                 margin-top: 50px;
                 text-align: center;
                 font-size: 0.9rem;
                 color: var(--text-muted);
-            }}
+            }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="header">
                 <span class="badge">AI 精準分析報告</span>
-                <h1>{today_str} 財經晨報</h1>
+                <h1>2026-03-23 財經晨報</h1>
                 <p style="color: var(--text-muted);">由 Antigravity 驅動的全球財經自動化系統</p>
             </div>
             <div class="content">
-                {html_body}
+                <p>🌟 【今日 美股 台股 國際財經 重點總整理】 🌟</p>
+<ol>
+<li>
+<p>📊 整體市場情緒：<br />
+    🔴 負面：美伊戰事擔憂及川普言論引發亞股賣壓，台股重挫，儘管美股有部分正面消息。</p>
+</li>
+<li>
+<p>💡 重點新聞摘要：</p>
+<ul>
+<li>美伊戰事擔憂，美股標普回測6個月低點。📉</li>
+<li>川普「1句話」致台股狂瀉821點。🚨</li>
+<li>美最高院推翻川普關稅，美股科技巨頭領漲。🚀</li>
+<li>亞股上周賣壓湧現，台股遭外資拋售最多。💸</li>
+<li>新美股ETF今開募，低門檻搶當蘋果、輝達股東。🆕</li>
+</ul>
+</li>
+<li>
+<p>🔎 消息面與來源評估：<br />
+    新聞主要來自知名財經媒體（Yahoo股市）與券商分析（豐雲學堂），報導涵蓋市場動態、政策影響及新品資訊，資訊廣泛且具時效性。</p>
+</li>
+<li>
+<p>📖 推薦閱讀連結：</p>
+<ul>
+<li>川普「1句話」台股狂瀉821點！台積電穩守成交王 這檔緊咬輝達商機成交額衝180億元<br />
+    連結：https://news.google.com/rss/articles/CBMi3gNBVV95cUxPRTZSVjdGOWsxcTdEYzJRRHpqZEx0eWRnVE1tZEJhbGVWcHQ4NTE1UHgyZDJDeGVtRzlqUDV6WTZyejNqcncwajNfX1hLd1NaVDJuVlFQb2RzT3dfSU8xUllGblNUUUt2UTdzU3JsSmNtVUxKLTZlcDBValh4UlFyMDVjQlFrejBDMTRtdDdkV0dnTUZaTjE3ZElBdEFqVWk1V0R0TEdJdHVUNmhSVUpKVGxXSDVYYU40S1kwb19tSFd1SnN1RERMVGRqSHBrRmdycHN3RTlyZmZlSHhieXk2V0F4TV9MUE1OdnA0bkQ3RUU1cHhkUzFqcUFldDJwZUdJMGpmVGlCdTNrMGRSYmdmVVJuYmVEc2lIbEd3UTFhRUJDczhSRC1HVG5lNHE3SzlKM3A2VkljT1ZDVGNPc0JiNjdXT2laN3Z0akZnQ05EOVUzcDQ0RHFMdUpYX2ZJcElpM3RZb0o1VXdpZ2VKTHkydDNtS0JhdDZfYlkzZ1VjUmhyZFZDTHBHRnlpeHJrR1psbFlHcVpmNzc1eldVbmhtb3JRX1V5UFAtQ2lPSUV4WTYtX3pjX0MtYnRFWHVXTTNCbFgxT1dUYXZURWlWbFFHTldBbm1tbExqVERKNGl3?oc=5</li>
+<li>美股盤後｜擔憂美伊戰事升級，標普回測6個月最低0323｜豐雲學堂 2026 年 03 月<br />
+    連結：https://news.google.com/rss/articles/CBMi9gJBVV95cUxPOTZ6NTktVWZwY1duVkdQYVFSaXhLY2gzT2tMNGpTWlVZZzZNamhVYXdzby16QzB0OFgtV1h4SkttLUt4Z0o2anAwdHpSczNueF9BbHVnZDM3Y3loaXdfV2NDYVJlSlY0R08yTzZaV3p5WVNNU1RsMnB5SkhGQmVIUTVwQ1NTcTdTOWJ5TWRiMXJhQlBoS0gwdThXSmtiWlNpMXpBTVJGZXpSVnM3SkNlTGJrYW9tZ1lMYlJlZGtwc19TQUFtTlgxTGFkcmRhLUdOMl9fU092THZZVmwyTUlBTnJGZmJ5em5QVGFXbi00VlNQLVo0N2F1MmZKaF8xMmJVV2lqMUl0elI5YXNPX2tqckJtLThCRm5XS0x4Y0U4UHRhaFZrcjhxTHJzTzAyVjhKM2g2ZGRSRVowb3dzVGViVER0VXFZMkoyREZFU1E1dHdRMEZFeVFGc01CcDF4bjN1QTVzLTFqSVI1dkJ6bDFQSnNkSWpadw?oc=5</li>
+</ul>
+</li>
+</ol>
             </div>
             <div class="footer">
                 &copy; 2026 Antigravity News Bot V2 / UI-UX Pro Max Powered
@@ -173,21 +149,4 @@ def main():
         </div>
     </body>
     </html>
-    """
-    with open(html_file_path, "w", encoding="utf-8") as f:
-        f.write(html_template)
-        
-    print(f"💾 報告已自動轉換為網頁存放至：{html_file_path}")
     
-    # =========== 步驟 4: 通知 (LINE/Telegram) ===========
-    
-    # 產生專屬的 GitHub Pages 網址 (統一全小寫網域以防出錯)
-    github_pages_url = f"https://iamanna1122.github.io/practice-work/{html_file_path}"
-    final_message = report_text + f"\n\n🔗 點我看完整精美網頁版報告：\n{github_pages_url}"
-        
-    push_notification(final_message)
-    
-    print("🏁 全部流程執行完畢。")
-
-if __name__ == "__main__":
-    main()

@@ -2,7 +2,7 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from urllib.parse import quote
 
-def get_latest_news(query="今日台股熱門焦點", max_results=5):
+def get_latest_news(query="美股 OR 台股 OR 國際財經", max_results=5):
     """
     使用免費且穩定的 Google News RSS 抓取最新新聞
     不需要任何 API Key 且不會被阻擋
@@ -34,6 +34,16 @@ def get_latest_news(query="今日台股熱門焦點", max_results=5):
             link_text = link.text if link is not None else ""
             date_text = pubDate.text if pubDate is not None else ""
             source_text = source.text if source is not None else "未知來源"
+            
+            # 使用 is.gd 縮短冗長的 Google News 網址 (加入 User-Agent 防止被阻擋)
+            try:
+                if link_text:
+                    api_url = "https://is.gd/create.php?format=simple&url=" + quote(link_text)
+                    short_req = urllib.request.Request(api_url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
+                    with urllib.request.urlopen(short_req, timeout=5) as short_res:
+                        link_text = short_res.read().decode('utf-8')
+            except Exception as e:
+                print(f"⚠️ 縮短網址失敗，保留原網址: {e}")
             
             results.append({
                 "title": title_text,

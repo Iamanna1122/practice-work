@@ -2,8 +2,8 @@ name: 每日新聞 AI 機器人與自動備份
 
 on:
   schedule:
-    # 這是 UTC 時間。台北時間 02:00 AM = UTC 18:00 (前一天的晚上)
-    - cron: '0 18 * * *'
+    # 這是 UTC 時間。台北時間 08:00 AM = UTC 00:00
+    - cron: '0 0 * * *'
   workflow_dispatch: # 允許在 GitHub 網頁上手動點擊 "Run workflow" 觸發測試
 
 jobs:
@@ -38,4 +38,4 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "📝 自動備份：每日新聞報告"
-          file_pattern: "reports/*.md"
+          file_pattern: "*.md *.html"

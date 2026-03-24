@@ -2,3 +2,4 @@ google-genai
 duckduckgo-search
 requests
 python-dotenv
+markdown

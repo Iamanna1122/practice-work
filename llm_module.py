@@ -1,7 +1,7 @@
 import os
 from google import genai
 
-def analyze_news(news_list, keyword="今日台股熱門焦點"):
+def analyze_news(news_list, keyword="美股 OR 台股 OR 國際財經"):
     """
     使用最新版 Gemini Flash 模型分析新聞情緒與重點
     """
@@ -44,14 +44,14 @@ def analyze_news(news_list, keyword="今日台股熱門焦點"):
 (簡單分析這批新聞來源的多元性及可靠性，例如是否多為官方數據或特定媒體風向)
 
 4. 📖 推薦閱讀連結：
-(請從上面的新聞中選出 1 到 2 篇最具代表性的新聞，附上標題與連結)
+(請從上面的新聞中選出 1 到 2 篇最具代表性的新聞，附上標題與連結。⚠️ 極度重要：請【絕對必須使用】我上方提供給你的短網址連結，不要自己重新生成、不要還原網址、也不要加上多餘的標籤，直接輸出原封不動的該則新聞 `連結` 字串！)
 """
 
     try:
         # 初始化 Gemini Client
         client = genai.Client(api_key=api_key)
         
-        # 呼叫最新的 Gemini 2.5 Flash 模型
+        # 呼叫最新的 Gemini 2.5 Flash 模型 (以確保自動化排程不卡頓)
         response = client.models.generate_content(
             model='gemini-2.5-flash',
             contents=prompt,
