@@ -1,179 +1,123 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>0050 元大台灣50 AI 分析報告 - 2026-03-30</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --accent: #f59e0b;
-            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            --card-bg: rgba(255, 255, 255, 0.95);
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
-        }
-        * { box-sizing: border-box; }
-        body {
-            font-family: 'Inter', 'Noto Sans TC', sans-serif;
-            line-height: 1.8;
-            background: var(--bg-gradient);
-            color: var(--text-main);
-            margin: 0;
-            padding: 40px 20px;
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 860px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            padding: 55px;
-            border-radius: 24px;
-            box-shadow: var(--shadow);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.6);
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 44px;
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 32px;
-        }
-        .badge {
-            display: inline-block;
-            padding: 5px 16px;
-            background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-            color: var(--primary);
-            border-radius: 100px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 14px;
-            letter-spacing: 0.05em;
-        }
-        h1 {
-            font-size: 2.4rem;
-            margin: 0 0 10px;
-            color: var(--primary-dark);
-            letter-spacing: -0.03em;
-        }
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 1rem;
-            margin: 0;
-        }
-        h2 {
-            font-size: 1.4rem;
-            color: var(--primary);
-            margin-top: 44px;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #eff6ff;
-        }
-        h2::before {
-            content: '';
-            width: 5px;
-            height: 22px;
-            background: linear-gradient(to bottom, var(--accent), #ef4444);
-            border-radius: 4px;
-            flex-shrink: 0;
-        }
-        p { margin-bottom: 18px; }
-        a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 1.5px solid #bfdbfe;
-            transition: all 0.2s;
-        }
-        a:hover {
-            color: var(--primary-dark);
-            border-bottom-color: var(--primary-dark);
-        }
-        ul { padding-left: 0; list-style: none; }
-        li {
-            margin-bottom: 14px;
-            padding: 14px 18px;
-            background: #f8fafc;
-            border-radius: 12px;
-            border: 1px solid #e2e8f0;
-            border-left: 4px solid var(--accent);
-        }
-        strong { color: var(--primary-dark); }
-        .footer {
-            margin-top: 50px;
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            padding-top: 24px;
-            border-top: 2px solid #f1f5f9;
-        }
-        .powered {
-            margin-top: 8px;
-            font-size: 0.78rem;
-            opacity: 0.7;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <span class="badge">🤖 AI 精準分析 × Tavily 即時搜尋</span>
-            <h1>0050 元大台灣50</h1>
-            <p class="subtitle">AI 每日分析報告 · 2026年03月30日 10:31</p>
+
+    <!DOCTYPE html>
+    <html lang="zh-TW">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AI 財經晨報 - 2026-03-30</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+        <style>
+            :root {
+                --primary: #2563eb;
+                --primary-dark: #1d4ed8;
+                --accent: #f59e0b;
+                --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+                --card-bg: rgba(255, 255, 255, 0.9);
+                --text-main: #1e293b;
+                --text-muted: #64748b;
+                --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            }
+            * { box-sizing: border-box; }
+            body { 
+                font-family: 'Inter', 'Noto Sans TC', sans-serif; 
+                line-height: 1.7; 
+                background: var(--bg-gradient); 
+                color: var(--text-main);
+                margin: 0;
+                padding: 40px 20px;
+                min-height: 100vh;
+            }
+            .container { 
+                max-width: 800px; 
+                margin: 0 auto; 
+                background: var(--card-bg); 
+                padding: 50px; 
+                border-radius: 24px; 
+                box-shadow: var(--shadow);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255,255,255,0.5);
+            }
+            .header {
+                text-align: center;
+                margin-bottom: 40px;
+                border-bottom: 2px solid #f1f5f9;
+                padding-bottom: 30px;
+            }
+            .badge {
+                display: inline-block;
+                padding: 4px 12px;
+                background: #dbeafe;
+                color: var(--primary);
+                border-radius: 100px;
+                font-size: 0.85rem;
+                font-weight: 600;
+                margin-bottom: 12px;
+            }
+            h1 { 
+                font-size: 2.5rem; 
+                margin: 0; 
+                color: var(--primary-dark); 
+                letter-spacing: -0.025em;
+            }
+            h2 { 
+                font-size: 1.5rem; 
+                color: var(--primary); 
+                margin-top: 40px; 
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            h2::before {
+                content: '';
+                width: 4px;
+                height: 24px;
+                background: var(--accent);
+                border-radius: 4px;
+            }
+            p { margin-bottom: 20px; }
+            a { 
+                color: var(--primary); 
+                text-decoration: none; 
+                font-weight: 600;
+                transition: all 0.2s;
+                border-bottom: 2px solid transparent;
+            }
+            a:hover { 
+                color: var(--primary-dark);
+                border-bottom-color: var(--primary-dark);
+            }
+            ul { padding-left: 0; list-style: none; }
+            li { 
+                margin-bottom: 16px; 
+                padding: 15px;
+                background: #f8fafc;
+                border-radius: 12px;
+                border: 1px solid #e2e8f0;
+            }
+            .footer {
+                margin-top: 50px;
+                text-align: center;
+                font-size: 0.9rem;
+                color: var(--text-muted);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <span class="badge">AI 精準分析報告</span>
+                <h1>2026-03-30 財經晨報</h1>
+                <p style="color: var(--text-muted);">由 Antigravity 驅動的全球財經自動化系統</p>
+            </div>
+            <div class="content">
+                <p>❌ Gemini 分析過程發生錯誤: 'ascii' codec can't encode characters in position 23-24: ordinal not in range(128)</p>
+            </div>
+            <div class="footer">
+                &copy; 2026 Antigravity News Bot V2 / UI-UX Pro Max Powered
+            </div>
         </div>
-        <div class="content">
-            <h1>📊 0050 元大台灣50 AI 分析報告</h1>
-<p><strong>報告時間：2026年03月30日 10:31</strong></p>
-<h2>1. 📈 整體市場情勢</h2>
-<p>🟡 <strong>中立偏審慎。</strong> 儘管0050近期成功快速填息並獲得「國家隊」買超支持，顯示國內市場信心與其本身強勁的流動性，但外資連續性的大幅賣超對短期市場情緒構成壓力，且近期股價出現修正波段，需審慎觀察後續走勢。</p>
-<h2>2. 💡 重點新聞摘要</h2>
-<ul>
-<li>0050於2026/01/22除息1元並迅速填息，穩居台股ETF規模與受益人數冠軍寶座。</li>
-<li>國家隊（八大公股）於2026/03/27斥資8.6億元，大舉買超0050達1.1萬張。</li>
-<li>外資於2026/03/26連23日大砍0050，賣超逾3萬張，撤資達23.2億元，賣壓沉重。</li>
-<li>2026/03/20因0050換股生效，導致台積電尾盤爆量，影響股價短期波動。</li>
-<li>分析師評估台積電回檔屬技術整理，其AI、HPC與先進製程需求仍是長線主軸。</li>
-<li>0050近期股價（截至2026/03/23）自77.80元回檔至74.25元，短期承壓。</li>
-</ul>
-<h2>3. 📊 技術面與基本面分析</h2>
-<p>📊 <strong>股價動態與近期趨勢：</strong> 截至2026年3月23日，0050近期股價自3月18日的77.80元高點回落至74.25元，呈現約4.5%的修正。此波跌勢伴隨外資連續23日大舉賣超及特定日期的換股效應。雖然八大公股出手買超8.65億元，顯示國內機構支持，但未能完全抵銷外資賣壓，顯示短期賣方力道強勁，技術面上或已跌破短期均線支撐。</p>
-<p><strong>基本面概述：</strong> 0050作為台灣唯一資產規模破兆元的ETF，坐擁1兆1045億元規模與211.37萬受益人，其市場地位穩固，流動性充裕。近期配息1元並迅速填息，凸顯其成分股的穩健獲利能力。其最大權重成分股台積電雖受短線換股影響，但分析師仍看好其AI、HPC與先進製程的長期成長動能，為0050提供堅實的基本面支撐。然而，外資的持續出貨仍是近期需密切關注的潛在壓力點。</p>
-<h2>4. ⚠️ 風險提示與投資建議</h2>
-<p>⚠️ <strong>風險提示：</strong><br />
-1.  <strong>外資賣壓持續：</strong> 近期外資連續性大舉賣超0050，若此趨勢延續，恐對股價造成持續性下行壓力。<br />
-2.  <strong>成分股集中風險：</strong> 0050高度受台積電等權重股表現影響，單一企業或產業的波動將直接衝擊ETF整體表現。<br />
-3.  <strong>全球經濟放緩風險：</strong> 若全球經濟成長趨緩或國際利率政策變動，可能影響台灣出口導向產業，進而波及0050成分股獲利。</p>
-<p>💡 <strong>投資建議：</strong><br />
-1.  <strong>審慎分批佈局：</strong> 考量當前外資壓力及股價回檔，建議投資人採取「耐心等待、分批進場」策略，於價格相對低檔或出現築底訊號時逐步累積，以攤平風險。<br />
-2.  <strong>定期定額與長期持有：</strong> 0050代表台股市場的長期成長動能，適合作為核心資產配置，以定期定額方式長期持有，有助於降低短期市場波動的影響。</p>
-<h2>5. 🔗 原始資料來源</h2>
-<ul>
-<li>[1] 元大台灣50(0050.TW) 相關新聞 - Yahoo股市<br />
-    來源：https://tw.stock.yahoo.com/quote/0050.TW/news</li>
-<li>[2] 國家隊砸8.6億掃貨1.1萬張0050 建倉5檔主動式ETF各破千張<br />
-    來源：https://tw.stock.yahoo.com/news/%E5%9C%8B%E5%AE%B6%E9%9A%8A%E7%A0%B88-6%E5%84%84%E6%8E%83%E8%B2%A81-1%E8%90%AC%E5%BC%B50050-%E5%BB%BA%E5%80%895%E6%AA%94%E4%B8%BB%E5%8B%95%E5%BC%8Fetf%E5%90%84%E7%A0%B4%E5%8D%83%E5%BC%B5-230000181.html</li>
-<li>[3] 0050已淌血23日！外資不手軟續砍3萬張「提23億出場」 0056等3檔 ...<br />
-    來源：https://tw.stock.yahoo.com/news/0050%E5%B7%B2%E6%B7%8C%E8%A1%8023%E6%97%A5-%E5%A4%96%E8%B3%87%E4%B8%8D%E6%89%8B%E8%BB%9F%E7%BA%8C%E7%A0%B83%E8%90%AC%E5%BC%B5-%E6%8F%9023%E5%84%84%E5%87%BA%E5%A0%B4-0056%E7%AD%893%E6%AA%94%E9%AB%98%E6%81%AFetf%E5%90%8C%E6%AD%A5%E6%8E%A5%E5%88%80-103000338.html</li>
-<li>[4] 元大台灣50(0050.TW) 走勢圖 - Yahoo股市<br />
-    來源：https://tw.stock.yahoo.com/quote/0050.TW</li>
-<li>[5] 元大台灣50(0050)_歷史行情_個股總覽_台股ETF_鉅亨網 - 頭條新聞<br />
-    來源：https://www.cnyes.com/twstock/ps_historyprice.aspx?code=0050</li>
-<li>[6] 0050換股生效！台積電尾盤爆逾2.4萬張巨量 - Yahoo股市<br />
-    來源：https://tw.stock.yahoo.com/news/0050%E6%8F%9B%E8%82%A1%E7%94%9F%E6%95%88%EF%BC%81%E5%8F%B0%E7%A9%8D%E9%9B%BB%E5%B0%BE%E7%9B%A4%E7%88%86%E9%80%BE24%E8%90%AC%E5%BC%B5%E5%B7%A8%E9%87%8F-054004377.html</li>
-<li>[7] 元大台灣50 0050 - 總覽| 鉅亨網- 台股<br />
-    來源：https://www.cnyes.com/twstock/0050</li>
-</ul>
-        </div>
-        <div class="footer">
-            本報告由 Antigravity AI 自動生成，資料來源：Tavily Search API
-            <div class="powered">Powered by Gemini 2.5 Flash × Tavily × GitHub Pages</div>
-        </div>
-    </div>
-</body>
-</html>
+    </body>
+    </html>
+    
