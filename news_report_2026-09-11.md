@@ -1,0 +1,1 @@
+❌ Gemini 分析過程發生錯誤: 'ascii' codec can't encode characters in position 23-24: ordinal not in range(128)
